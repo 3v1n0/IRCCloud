@@ -348,6 +348,10 @@ function openMainWindow() {
     title: 'IRCCloud'
   });
 
+  if (conf.get('x') || conf.get('y')) {
+    mainWindow.setPosition(conf.get('x'), conf.get('y'));
+  }
+
   mainWindow.loadURL('https://www.irccloud.com');
 
   mainWindow.on('closed', function () {
@@ -383,6 +387,14 @@ function openMainWindow() {
     conf.set({
       width: size[0],
       height: size[1]
+    });
+  });
+
+  mainWindow.on('moved', function (event) {
+    var pos = this.getPosition();
+    conf.set({
+      x: pos[0],
+      y: pos[1]
     });
   });
 
