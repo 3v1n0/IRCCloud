@@ -213,7 +213,7 @@ App.once('ready', function() {
           },
           {
             label: '&Close',
-            accelerator: 'Ctrl+W',
+            accelerator: 'Ctrl+Shift+Q',
             click: function() {
               var focusedWindow = BrowserWindow.getFocusedWindow();
               if (focusedWindow) {
