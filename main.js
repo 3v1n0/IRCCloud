@@ -208,11 +208,7 @@ App.once('ready', function() {
         label: '&File',
         submenu: [
           {
-            label: '&Open',
-            accelerator: 'Ctrl+O',
-          },
-          {
-            label: '&Close',
+            label: '&Quit',
             accelerator: 'Ctrl+Shift+Q',
             click: function() {
               var focusedWindow = BrowserWindow.getFocusedWindow();
