@@ -25,6 +25,10 @@ window._zoomActualSize = function() {
   webFrame.setZoomFactor(1);
 };
 
+window._openChannelPalette = function () {
+  jQuery.event.trigger({ type: 'keydown', which: 75, ctrlKey: true }); // Simulate Ctrl+K
+}
+
 var remote = require('remote');
 var Menu = remote.require('menu');
 var MenuItem = remote.require('menu-item');
