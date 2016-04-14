@@ -6,6 +6,7 @@ var ConfigStore = require('configstore');
 var Menu = require('menu');
 var Shell = require('shell');
 var IpcMain = require('electron').ipcMain;
+var GlobalShortcut = require('electron').globalShortcut;
 
 require('crash-reporter').start();
 
@@ -401,6 +402,13 @@ function openMainWindow() {
   if (conf.get('menu-bar') === false) {
     hideMenuBar(mainWindow);
   }
+
+  var ret = GlobalShortcut.register('ctrl+p', function() {
+    var focusedWindow = BrowserWindow.getFocusedWindow();
+    if (focusedWindow && focusedWindow.webContents) {
+      focusedWindow.webContents.executeJavaScript('_openChannelPalette()');
+    }
+  });
 }
 
 App.on('activate-with-no-open-windows', function () {
